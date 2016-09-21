@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- * Woo Floating cf7ee_backend
+ * cf7ee_backend
  *
- * Allows user to get WooCommerce Floating cf7ee_backend.
+ * Enable WYSIWYG editor to the Contact Form 7 e-mail body.
  *
  * @class   cf7ee_backend 
  */
@@ -29,13 +29,7 @@ class cf7ee_backend {
 		$this->method_description = __( 'CF7 email editor backend', 'cf7ee' );
 
 		// Get the necessary scripts to launch tinymce
-		$baseurl = includes_url( 'js/tinymce' );
-		$cssurl = includes_url('css/');
-
-		global $tinymce_version, $concatenate_scripts, $compress_scripts;
-
-		$version = 'ver=' . $tinymce_version;
-		$css = $cssurl . 'editor.css';
+		
 
 
 		add_action('admin_enqueue_scripts', array($this, 'cf7_enqueue_scripts_backend') );
@@ -43,10 +37,6 @@ class cf7ee_backend {
 		add_action( 'wp_print_footer_scripts', array( '_WP_Editors', 'enqueue_scripts' ), 1 );	
 
 		add_action('admin_footer', array($this, 'cf7ee_print_footer_scripts'));
-
-		add_action('wpcf7_save_contact_form', array($this, 'cf7ee_wpcf7_save_contact_form'), 1); 
-		
-		
 	}
 
 	
@@ -77,22 +67,10 @@ class cf7ee_backend {
 		    echo "<script type='text/javascript' src='{$baseurl}/wp-tinymce.php?c=1&amp;$version'></script>\n";
 		} else {
 		    echo "<script type='text/javascript' src='{$baseurl}/tinymce.min.js?$version'></script>\n";
-		    echo "<script type='text/javascript' src='{$baseurl}/plugins/compat3x/plugin.min.js?$version'></script>\n";
-		    echo "<script type='text/javascript' src='{ACF7EE_BASE_DIR}/includes/mce/table/plugin.min.js?$version'></script>\n";
+		    echo "<script type='text/javascript' src='{$baseurl}/plugins/compat3x/plugin.min.js?$version'></script>\n";		    
 		}
 
 	}
-
-	public function cf7ee_wpcf7_save_contact_form($WPCF7_ContactForm){
-		
-			$default_use_html = $WPCF7_ContactForm->prop('mail');
-			$default_use_html['use_html'] = true;
-
-			return $WPCF7_ContactForm;
-		
-			}
-
-
 	
 }
 
