@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Plugin Name:       CF7 E-mail Editor
+ * Plugin Name:       CF7 email editor
  * Description:       Enable WYSIWYG editor to the Contact Form 7 e-mail body. 
  * Version:           1.0.0
  * Author:            Shshanker
@@ -35,19 +35,10 @@ if ( ! class_exists( 'cf7_email_editor' ) ) {
 
 			
 			public function Wp_floating_social_share_scripts(){
-				// loading plugin custom js file
+				
 						wp_register_script( 'acf7ee-script', ACF7EE_PLUGIN_URL.'/js/scripts.js', array('jquery'), '1.0.0', true );
 						wp_enqueue_script( 'acf7ee-script' );
-						/*wp_register_script( 'acf7ee-tiny', '//cdn.tinymce.com/4/tinymce.min.js', array('jquery'), '1.0.0', true );
-						wp_enqueue_script( 'acf7ee-tiny' );
-						*/
-
-						/*wp_register_script( 'acf7ee-tiny', 'http://202.166.207.19/c/shshanker/aankha/wp-includes/js/tinymce/wp-tinymce.php?c=1&amp;ver=4208-20151113' );
-						wp_enqueue_script( 'acf7ee-tiny' );*/
-						//wp_enqueue_script( 'acf7ee-theme', 'http://202.166.207.19/c/shshanker/aankha/wp-includes/js/tinymce/themes/simple/editor_template.js' );
 						
-
-						//wp_enqueue_script('tiny_mce');
 			}
 			
 			public function cf7_email_editor_activate() {		 
