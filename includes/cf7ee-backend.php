@@ -30,37 +30,31 @@ class cf7ee_backend {
 
 		// Get the necessary scripts to launch tinymce
 		
-		add_action('admin_enqueue_scripts', array($this, 'cf7_enqueue_scripts_backend') );
+		add_action('admin_enqueue_scripts', array($this, 'cf7ee_enqueue_scripts_backend') );
 		add_action( 'wp_print_footer_scripts', array( '_WP_Editors', 'editor_js' ), 50 );
 		add_action( 'wp_print_footer_scripts', array( '_WP_Editors', 'enqueue_scripts' ), 1 );	
 
+		add_action('admin_init', array($this, 'cf7ee_js_wp_editor'));
 	}
 
 	
 
 
-	public function cf7_enqueue_scripts_backend(){
-		// Get the necessary scripts to launch tinymce
-		$baseurl = includes_url( 'js/tinymce' );
-		$cssurl = includes_url('css/');
-		$css = $cssurl . 'editor.css';
-		global $tinymce_version, $concatenate_scripts, $compress_scripts;	
-		
-		wp_register_style('tinymce_css', $css);
+	public function cf7ee_enqueue_scripts_backend(){
+
+		wp_register_style('tinymce_css', includes_url('css/editor.css'));
 		wp_enqueue_style('tinymce_css');
-
-		$compressed = $compress_scripts && $concatenate_scripts && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && false !== stripos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip');
-
-		if ( $compressed ) {		    
-	        wp_enqueue_script( 'cf7ee_wp_tiny_mce_php', $baseurl . '/wp-tinymce.php?c=1&amp;', array(), $tinymce_version, true );
-		} else {
-		    wp_enqueue_script( 'cf7ee_wp_tiny_mce_min', $baseurl . '/tinymce.min.js', array(), $tinymce_version, true );
-		    wp_enqueue_script( 'cf7ee_wp_tiny_mce_plugins', $baseurl . '/plugins/compat3x/plugin.min.js', array(), $tinymce_version, true );		    
-		}
-
-
-
+		
 	}
+
+	public function cf7ee_js_wp_editor( $settings = array() ) {
+	if ( ! class_exists( '_WP_Editors' ) )
+		require( ABSPATH . WPINC . '/class-wp-editor.php' );
+		
+		$set = _WP_Editors::parse_settings( 'apid', $settings );
+		$set['textarea_rows'] = '50';			
+		_WP_Editors::editor_settings( 'apid', $set );
+}
 	
 }
 

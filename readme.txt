@@ -3,8 +3,8 @@ Contributors: shivashankerbhatta
 Donate link: https://github.com/shshanker/cf7-email-editor
 Tags: cf7, contact form 7, contact form 7 email editor, cf7 email editor, WYSIWYG
 Requires at least: 3.0.1
-Tested up to: 4.6.1
-Stable tag: 1.0.0
+Tested up to: 4.7.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,12 +18,13 @@ Contribution link: https://github.com/shshanker/cf7-email-editor
 
 
 ### The Plugin Features:
+* Customized toolbar (New)
 
 * E-mail editor - When yeou checked "Use HTML content type" the textarea will trasform into WYSIWYG editor.
 
 * WYSIWYG - What you see is what you get.
 
-* Specific CF7 mail - You can toggle the option based on your requirement based on your requirement
+* Specific CF7 mail - You can toggle the option based on your requirement.
 
 
 == Installation ==
@@ -32,6 +33,12 @@ Contribution link: https://github.com/shshanker/cf7-email-editor
 * Goto Setting admin menu, right on the button you'll find "CF7 E-mail Editor".
 * Activate.
 * Easy is right.
+
+== Screenshots ==
+
+1. Automatic email editor (WYSIWYG - tinyMCE ) enable on select Use HTML content type.
+2. Automatic email editor (WYSIWYG - tinyMCE ) disable on deselect Use HTML content type.
+
 
 
 == License ==
