@@ -15,6 +15,8 @@ function init_cf7ee_tinyMCE(){
 	 if(jQuery('#wpcf7-mail-use-html').is(":checked")) {            
 			
 		tinymce.init( {
+			relative_urls: false,
+			remove_script_host: false,
 		        mode : "exact",
 		        elements : 'wpcf7-mail-body',
 		        theme: "modern",
